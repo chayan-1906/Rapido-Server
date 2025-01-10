@@ -26,7 +26,7 @@ app.use(morgan("dev"));
 
 const server = http.createServer(app);
 
-const io = socketIo(server, { cors: { origin: "*" } });
+const io = socketIo(server, {cors: {origin: "*"}});
 
 // Attach the WebSocket instance to the request object
 app.use((req, res, next) => {
@@ -51,6 +51,10 @@ const start = async () => {
 
         // Uncomment this and comment below one if you want to run on ip address so that you can
         // access api in physical device
+
+        app.get('/', (req, res) => {
+            res.send('Hello from Vercel!');
+        });
 
         // server.listen(process.env.PORT || 3000, "0.0.0.0", () =>
         server.listen(process.env.PORT || 3000, () =>
