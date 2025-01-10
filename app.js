@@ -20,6 +20,9 @@ const rideRouter = require("./routes/ride");
 // Import socket handler
 const handleSocketConnection = require("./controllers/sockets");
 
+const EventEmitter = require("events");
+EventEmitter.defaultMaxListeners = 20;
+
 const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
