@@ -20,16 +20,13 @@ const rideRouter = require("./routes/ride");
 // Import socket handler
 const handleSocketConnection = require("./controllers/sockets");
 
-const EventEmitter = require("events");
-EventEmitter.defaultMaxListeners = 20;
-
 const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 
 const server = http.createServer(app);
 
-const io = socketIo(server, {cors: {origin: "*"}});
+const io = socketIo(server, { cors: { origin: "*" } });
 
 // Attach the WebSocket instance to the request object
 app.use((req, res, next) => {
@@ -54,10 +51,6 @@ const start = async () => {
 
         // Uncomment this and comment below one if you want to run on ip address so that you can
         // access api in physical device
-
-        app.get('/', (req, res) => {
-            res.send('Hello from Vercel!');
-        });
 
         // server.listen(process.env.PORT || 3000, "0.0.0.0", () =>
         server.listen(process.env.PORT || 3000, () =>
