@@ -43,6 +43,7 @@ const getMyRides = async (req, res) => {
 
 */
 const createRide = async (req, res) => {
+    console.log('creating ride:', req);
     const {vehicle, pickup, drop} = req.body;
 
     if (!vehicle || !pickup || !drop) {
